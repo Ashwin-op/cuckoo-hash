@@ -9,8 +9,8 @@ from cuckoo_hash_24 import CuckooHash24
 # - Functions should be tested using Python 3.6+ on a Linux environment.
 # - You must submit the requirements.py, cuckoo_hash.py, and cuckoo_hash_24.py files, along with any additional source files that you might create
 # - The submission should either be the files themselves, or a zip file not containing any directories.
-# - We have provided a project1_tests.py file that contains some simple test cases to give an idea of how we will be running your
-#   code. Please use that file when testing your implementation.
+# - We have provided test files project1_tests.py and project1_tests_24.py file that contains some simple test cases to give an idea of how we will be running your
+#   code for the CuckooHash and CuckooHash24 classes respectively. Please use these files when testing your implementation.
 #
 #
 # We have also provided the hash function, hash_func(), that you need to use when accessing table entries. Please do not define
@@ -66,4 +66,3 @@ from cuckoo_hash_24 import CuckooHash24
 # then relocated to its own alternate location, possibly displacing another item, and so on, until a maximum number of
 # displacements is reached. You will use the same method for determining when to rehash.
 #
-# Copy the project1_tests.py to project1_tests_24.py and make modifications to test your 2,4-cuckoo

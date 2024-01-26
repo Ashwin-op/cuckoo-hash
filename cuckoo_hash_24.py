@@ -45,8 +45,6 @@ class CuckooHash24:
             if bucket is None:
                 self.tables[table][bucket_index] = [key]
                 return True
-            elif key in bucket:
-                return False
             elif len(bucket) == self.bucket_size:
                 key_index = self.get_rand_idx_from_bucket(bucket_index, table)
                 key, bucket[key_index] = bucket[key_index], key

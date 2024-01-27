@@ -50,19 +50,19 @@ from cuckoo_hash_24 import CuckooHash24
 # associative, i.e., each bucket of the cuckoo hash consist of multiple slots for items.
 # A bucket size of 4 is a common value in practice.
 #
-# Hint: You can restructure the cuckoo hash to implement the multi-way set or you can implement
-# the set associativity without changing the underlying tables.
-#
 # A lookup for key proceeds by computing two hashes of key to find buckets b1 and b2
-# that could be used to store the key, and examining all of the
+# that could be used to store the key from tables 0 and 1 respectively, and examining all of the
 # slots within each of those buckets to determine if the key is
 # present. You will modify your cuckoo hash to be a basic “2,4-cuckoo” hash table (two hash functions,
 # four slots per bucket).
 # A consequence of this is that Lookup operations always check 2B keys (B is the size of each bucket).
-# To Insert a new key into the table, if either of the two
-# buckets has an empty slot, it is then inserted in that bucket; if
-# neither bucket has space, a random key from one candidate
-# bucket is displaced by the new item. The displaced item is
-# then relocated to its own alternate location, possibly displacing another item, and so on, until a maximum number of
+#
+# To Insert a new key into the table, we compute the hash of the key in table 0 to find the bucket b1,
+# and if b1 has an empty slot, the key is inserted in that bucket; otherwise, a random key
+# from b1 is displaced by the new item. We then compute the hash for the displaced item in table 1 to find the bucket b2,
+# attempting to insert the item there the same way (possibly displacing another item from b2), and so on, until a maximum number of
 # displacements is reached. You will use the same method for determining when to rehash.
 #
+# the buckets should be implemented as Python lists (as shown in the type hinting for get_table_contents()), and the ordering of elements in each bucket should be
+# according to their insertion order. for example, if a bucket has keys [a, b, c, d], and the key c is displaced when another key e is being inserted
+# , the new bucket should look like [a, b, d, e].

@@ -38,12 +38,10 @@ class CuckooHash:
         return False
 
     def lookup(self, key: int) -> bool:
-        if (
+        return (
             self.tables[0][self.hash_func(key, 0)] == key
             or self.tables[1][self.hash_func(key, 1)] == key
-        ):
-            return True
-        return False
+        )
 
     def delete(self, key: int) -> None:
         if self.tables[0][self.hash_func(key, 0)] == key:
